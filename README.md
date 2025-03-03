@@ -1,4 +1,4 @@
-## AWS S3 to DynamoDB Integration
+## CSV to DynamoDB Integration
 
 This guide outlines the step-by-step process to set up an S3 bucket, DynamoDB table, and a Lambda function for processing CSV files.
 
