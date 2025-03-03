@@ -54,9 +54,3 @@ Add your Python script to process CSV files from S3 and insert data into DynamoD
 2. Click "Explore table items".
 3. Verify that each row from the CSV has been inserted as an item.
 
-### Step 9: (Optional) Clean up resources
-1. Delete the S3 bucket.
-2. Delete the DynamoDB table.
-3. Delete the Lambda function.
-4. Remove the IAM role if not needed elsewhere.
-
