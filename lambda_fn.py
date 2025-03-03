@@ -5,7 +5,7 @@ import uuid
 # Initialize AWS clients
 s3 = boto3.client('s3')
 dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('CSVtable')  # Updated DynamoDB table name
+table = dynamodb.Table('CSVDataTable')  # Updated DynamoDB table name
 
 def lambda_handler(event, context):
     # Get bucket and object key from the S3 event
@@ -13,7 +13,7 @@ def lambda_handler(event, context):
     object_key = event['Records'][0]['s3']['object']['key']
 
     # Ensure the event is from the correct bucket
-    if bucket_name != 'arun-csv-bucket':
+    if bucket_name != 'csv-upload-bucket':
         return {
             'statusCode': 400,
             'body': f'Unexpected bucket: {bucket_name}'
@@ -33,7 +33,7 @@ def lambda_handler(event, context):
             item = {
                 'id': str(uuid.uuid4()),  # Generate a unique ID for each row
                 'name': row[0],           # Assuming 'name' is the first column
-                'email': row[1],          # Comma added here ✅
+                'email': row[1],          # Assuming 'email' is the second column
                 'city': row[2]            # Assuming 'city' is the third column
             }
             table.put_item(Item=item)
